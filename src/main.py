@@ -4,7 +4,7 @@ import asyncio
 import os
 from typing import List
 
-from amiga_package import ops
+from tracky_mc_tractor_face import ops
 
 # import internal libs
 
