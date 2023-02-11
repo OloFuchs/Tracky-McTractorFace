@@ -1,7 +1,116 @@
 RelativeLayout:
+    TabbedPanel:
+        do_default_tab: False
+        TabbedPanelItem:
+            text: "Rgb"
+            Image:
+                id: rgb
+        TabbedPanelItem:
+            text: "Cropped"
+            BoxLayout:
+                id: cropped
+                orientation: "vertical"
+                BoxLayout:
+                    orientation: "horizontal"
+                    Image:
+                        id: cropImage
+                    Image:
+                        id: procImage	
+                BoxLayout:
+                    orientation: "vertical"
+                    BoxLayout:
+                        orientation: "horizontal"
+                        BoxLayout:
+                            orientation: "vertical"
+                            Label:
+                                text: "Low Threshold"
+                            Slider:
+                                id: slider_LR
+                                step: 1
+                                min: 1
+                                max: 255
+                                orientation: "horizontal"
+                            Label:
+                                text: "R: " + str(slider_LR.value)
+                            Slider:
+                                id: slider_LG
+                                step: 1
+                                min: 1
+                                max: 255
+                                orientation: "horizontal"
+                            Label:
+                                text: "G: " + str(slider_LG.value)
+                            Slider:
+                                id: slider_LB
+                                step: 1
+                                min: 1
+                                max: 255
+                                orientation: "horizontal"
+                            Label:
+                                text: "B: " + str(slider_LB.value)
+                        BoxLayout:
+                            orientation: "vertical"
+                            Label:
+                                text: "High Threshold"
+                            Slider:
+                                id: slider_HR
+                                step: 1
+                                min: 1
+                                max: 255
+                                orientation: "horizontal"
+                            Label:
+                                text: "R: " + str(slider_HR.value)
+                            Slider:
+                                id: slider_HG
+                                step: 1
+                                min: 1
+                                max: 255
+                                value: 255
+                                orientation: "horizontal"
+                            Label:
+                                text: "G: " + str(slider_HG.value)
+                            Slider:
+                                id: slider_HB
+                                step: 1
+                                min: 1
+                                max: 255
+                                value: 255
+                                orientation: "horizontal"
+                            Label:
+                                text: "B: " + str(slider_HB.value)
+        TabbedPanelItem:
+            text: "Control"
+            BoxLayout:
+                id: control
+                orientation: "vertical"
+                Image:
+                    id: controlImage
+                BoxLayout:
+                    orientation: "vertical"
+                    Slider:
+                        id: lowRadiusSlider
+                        step:1
+                        min:1
+                        max:100
+                        value: 30
+                    Label: 
+                        text: "Low Radius " + str(lowRadiusSlider.value)
+                    Slider:
+                        id: highRadiusSlider
+                        step:1
+                        min:1
+                        max:100
+                        value: 100
+                    Label:
+                        text: "High Radius " + str(highRadiusSlider.value)
+        TabbedPanelItem:
+            text: "Graphs"
+            Image:
+                id: errorGraph
+                source: 'errorPlotImage.png'
     Button:
         id: back_btn_layout
-        pos_hint: {"x": 0.0, "top": 1.0}
+        pos_hint: {"x": 0.0, "top": 0.925}
         background_color: 0, 0, 0, 0
         size_hint: 0.1, 0.1
         background_normal: "assets/back_button.png"
@@ -10,7 +119,3 @@ RelativeLayout:
             source: "assets/back_button_normal.png" if self.parent.state == "normal" else "assets/back_button_down.png"
             pos: self.parent.pos
             size: self.parent.size
-    Label:
-        id: counter_label
-        text: "Tic: 0"
-        font_size: 40
